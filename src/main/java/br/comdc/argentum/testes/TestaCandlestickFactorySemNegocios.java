@@ -8,6 +8,7 @@ import br.com.dc.argentum.Candlestick;
 import br.com.dc.argentum.Negocio;
 import br.com.dc.argentum.reader.CandlestickFactory;
 
+
 public class TestaCandlestickFactorySemNegocios {
 
 	public static void main(String[] args) {
