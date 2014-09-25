@@ -33,4 +33,8 @@ public final class Negocio {
 	public double getVolume() {
 		return preco * quantidade;
 	}
+
+	public boolean isMesmoDia(Calendar outraData) {
+		return data.equals(outraData);
+	}
 }

@@ -11,6 +11,15 @@ import org.junit.Test;
 import br.com.dc.argentum.Negocio;
 
 public class NegocioTest {
+	
+	@Test
+	public void mesmoMilissegundoEhDoMesmoDia(){
+		Calendar agora = Calendar.getInstance();
+		Calendar mesmoMomento = (Calendar) agora.clone();
+		
+		Negocio negocio = new Negocio(40.0, 100, agora);
+		Assert.assertTrue(negocio.isMesmoDia(mesmoMomento));
+	}
 
 	@Test
 	public void dataDoNegocioEhImutavel() {
