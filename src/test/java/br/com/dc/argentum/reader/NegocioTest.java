@@ -3,6 +3,7 @@ package br.com.dc.argentum.reader;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import junit.framework.Assert;
 
@@ -11,6 +12,15 @@ import org.junit.Test;
 import br.com.dc.argentum.Negocio;
 
 public class NegocioTest {
+	
+	@Test
+	public void mesmoDiaHorasDiferentesNaoEhDoMesmoDia(){
+		Calendar manha = new GregorianCalendar(2011, 10, 20, 8, 30);
+		Calendar tarde = new GregorianCalendar(2011, 10, 20, 15, 30);
+		
+		Negocio negocio = new Negocio(40.0, 100, manha);
+		Assert.assertTrue(negocio.isMesmoDia(tarde));
+	}
 	
 	@Test
 	public void mesmoMilissegundoEhDoMesmoDia(){
