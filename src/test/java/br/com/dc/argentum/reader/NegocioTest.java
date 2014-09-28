@@ -14,6 +14,27 @@ import br.com.dc.argentum.Negocio;
 public class NegocioTest {
 	
 	@Test
+	public void mesmoDiaEMesMasAnosDiferentesNaoSaoDoMesmoDia(){
+		Calendar ano = new GregorianCalendar(2011, 10, 30);
+		Calendar outroAno = new GregorianCalendar(2012, 10, 30);
+		
+		Negocio negocio = new Negocio(10.0, 100, ano);
+		
+		Assert.assertFalse(negocio.isMesmoDia(outroAno));
+		
+	}
+	
+	@Test
+	public void mesmoDiaMasMesesDiferentesNaoSaoDoMesmoDia(){
+		Calendar mes  = new GregorianCalendar(2011, 6, 20);
+		Calendar outroMes = new GregorianCalendar(2011, 8, 20);
+		
+		Negocio negocio = new Negocio(10.0, 100, mes);
+		
+		Assert.assertFalse(negocio.isMesmoDia(outroMes));
+	}
+	
+	@Test
 	public void mesmoDiaHorasDiferentesNaoEhDoMesmoDia(){
 		Calendar manha = new GregorianCalendar(2011, 10, 20, 8, 30);
 		Calendar tarde = new GregorianCalendar(2011, 10, 20, 15, 30);

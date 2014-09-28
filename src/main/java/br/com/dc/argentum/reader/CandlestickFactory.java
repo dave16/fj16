@@ -1,5 +1,6 @@
 package br.com.dc.argentum.reader;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -34,6 +35,28 @@ public class CandlestickFactory {
 		return new Candlestick(abertura, fechamento, minimo, maximo, volume,
 				data);
 
+	}
+
+	public List<Candlestick> constroiCandles(List<Negocio> todosNegocios) {
+		List<Candlestick> candles = new ArrayList<>();
+
+		List<Negocio> negociosDoDia = new ArrayList<>();
+		Calendar dataAtual = todosNegocios.get(0).getData();
+
+		for (Negocio negocio : todosNegocios) {
+			if (!negocio.isMesmoDia(dataAtual)) {
+				Candlestick candleDoDia = constroiCandleParaData(dataAtual,
+						negociosDoDia);
+				candles.add(candleDoDia);
+				negociosDoDia = new ArrayList<Negocio>();
+				dataAtual = negocio.getData();
+			}
+			negociosDoDia.add(negocio);
+		}
+		Candlestick candleDoDia = constroiCandleParaData(dataAtual,
+				negociosDoDia);
+		candles.add(candleDoDia);
+		return candles;
 	}
 
 }
