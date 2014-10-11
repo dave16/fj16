@@ -11,7 +11,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import br.com.dc.argentum.Candlestick;
+import br.com.dc.argentum.Candle;
 import br.com.dc.argentum.Negocio;
 
 public class CandlestickFactoryTest {
@@ -42,7 +42,7 @@ public class CandlestickFactoryTest {
 
 		CandlestickFactory fabrica = new CandlestickFactory();
 
-		List<Candlestick> candles = fabrica.constroiCandles(negocios);
+		List<Candle> candles = fabrica.constroiCandles(negocios);
 
 		Assert.assertEquals(3, candles.size());
 		Assert.assertEquals(40.5, candles.get(0).getAbertura(), 0.00001);
@@ -67,7 +67,7 @@ public class CandlestickFactoryTest {
 				negocio4);
 
 		CandlestickFactory fabrica = new CandlestickFactory();
-		Candlestick candle = fabrica.constroiCandleParaData(hoje, negocios);
+		Candle candle = fabrica.constroiCandleParaData(hoje, negocios);
 
 		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
 		Assert.assertEquals(42.3, candle.getFechamento(), 0.00001);
@@ -87,7 +87,7 @@ public class CandlestickFactoryTest {
 		List<Negocio> negocios = Arrays.asList(negocio1);
 
 		CandlestickFactory fabrica = new CandlestickFactory();
-		Candlestick candle = fabrica.constroiCandleParaData(hoje, negocios);
+		Candle candle = fabrica.constroiCandleParaData(hoje, negocios);
 
 		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
 		Assert.assertEquals(40.5, candle.getFechamento(), 0.00001);
